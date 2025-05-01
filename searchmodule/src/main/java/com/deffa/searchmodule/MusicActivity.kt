@@ -93,7 +93,6 @@ class MusicActivity : AppCompatActivity() {
         binding.btnPlayPause.isEnabled = player != null
     }
 
-    /** Update SeekBar every 500ms */
     private val updateSeekbar = object : Runnable {
         override fun run() {
             player?.let {
@@ -103,7 +102,7 @@ class MusicActivity : AppCompatActivity() {
         }
     }
 
-    /** Hook Android's Visualizer to our custom view */
+
     private fun setupVisualizer(audioSessionId: Int) {
         visualizer = Visualizer(audioSessionId).apply {
             captureSize = Visualizer.getCaptureSizeRange()[1]
