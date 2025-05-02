@@ -26,7 +26,7 @@ class MusicActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         tracks = intent.getParcelableArrayListExtra(EXTRA_TRACKS) ?: emptyList()
-        currentIndex = intent.getIntExtra(EXTRA_INDEX, 0)
+        currentIndex = intent.getIntExtra(EXTRA_INDEX, 0).coerceIn(tracks.indices)
 
         binding.btnPrev.setOnClickListener { playAt(currentIndex - 1) }
         binding.btnPlayPause.setOnClickListener { togglePlayPause() }
@@ -63,6 +63,8 @@ class MusicActivity : AppCompatActivity() {
             }
             setOnCompletionListener {
                 binding.btnPlayPause.setImageResource(android.R.drawable.ic_media_play)
+                // Auto-advance to the next track
+                playAt(index + 1)
             }
             prepareAsync()
         }

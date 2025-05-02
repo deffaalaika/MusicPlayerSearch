@@ -4,5 +4,5 @@ mvn deploy:deploy-file \
   -Dfile=build/outputs/aar/searchmodule-release.aar \
   -DgroupId=com.deffa.searchmodule \
   -DartifactId=searchmodule \
-  -Dversion=1.0.6 \
+  -Dversion=1.0.8 \
   -Dpackaging=aar
